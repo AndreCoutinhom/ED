@@ -3,6 +3,15 @@ package lista;
 public class No<Tipo> {
     private Tipo elemento;
     private No<Tipo> proximo;
+    private No<Tipo> anterior;
+
+    public No<Tipo> getAnterior() {
+        return anterior;
+    }
+
+    public void setAnterior(No<Tipo> anterior) {
+        this.anterior = anterior;
+    }
 
     public No(Tipo elemento) {
         this.elemento = elemento;
@@ -32,9 +41,20 @@ public class No<Tipo> {
 
     @Override
     public String toString() {
-        return "No{" +
-                "elemento=" + elemento +
-                ", proximo=" + proximo +
-                '}';
+        String proximoStr = (proximo != null) ? String.valueOf(proximo.getElemento()) : "null";
+
+        if (anterior != null) {
+            String anteriorStr = String.valueOf(anterior.getElemento());
+            return "No{" +
+                    "anterior=" + anteriorStr +
+                    ", elemento=" + elemento +
+                    ", proximo=" + proximoStr +
+                    '}';
+        } else {
+            return "No{" +
+                    "elemento=" + elemento +
+                    ", proximo=" + proximoStr +
+                    '}';
+        }
     }
 }
